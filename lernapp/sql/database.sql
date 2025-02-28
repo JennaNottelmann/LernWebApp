@@ -11,22 +11,22 @@ CREATE TABLE benutzer (
     erstellt_von_admin BOOLEAN DEFAULT 0
 );
 
+-- Testnutzer & Admin anlegen
+INSERT INTO benutzer (username, password, role, bezahlt, erstellt_von_admin) VALUES
+('admin', '$2y$10$zKE8a/ZLsP8mTQ0xBYZP/u', 'admin', 1, 1),  -- Passwort: admin123
+('testuser', '$2y$10$zKE8a/ZLsP8mTQ0xBYZP/u', 'user', 1, 0);  -- Passwort: test123
+
 -- Fragen
 CREATE TABLE fragen (
     id INT AUTO_INCREMENT PRIMARY KEY,
     frage TEXT NOT NULL,
     antwort VARCHAR(255) NOT NULL,
     kategorie VARCHAR(50),
-    schwierigkeitsgrad INT DEFAULT 1,
-    quelle VARCHAR(255)
+    schwierigkeitsgrad INT DEFAULT 1
 );
 
--- Benutzerfortschritt
-CREATE TABLE benutzer_fortschritt (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    benutzer_id INT NOT NULL,
-    frage_id INT NOT NULL,
-    status ENUM('richtig', 'falsch', 'teilweise') NOT NULL,
-    FOREIGN KEY (benutzer_id) REFERENCES benutzer(id),
-    FOREIGN KEY (frage_id) REFERENCES fragen(id)
-);
+-- Beispiel-Fragen einfügen
+INSERT INTO fragen (frage, antwort, kategorie) VALUES
+('Was bedeutet OOP?', 'Objektorientierte Programmierung', 'Programmierung'),
+('Was ist ein Primary Key in MySQL?', 'Eindeutige ID für eine Tabelle', 'Datenbanken'),
+('Welche HTTP-Methode sendet Daten?', 'POST', 'Webentwicklung');
