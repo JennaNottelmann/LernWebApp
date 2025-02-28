@@ -25,8 +25,18 @@ CREATE TABLE fragen (
     schwierigkeitsgrad INT DEFAULT 1
 );
 
--- Beispiel-Fragen einfügen
+-- Beispiel-Fragen
 INSERT INTO fragen (frage, antwort, kategorie) VALUES
 ('Was bedeutet OOP?', 'Objektorientierte Programmierung', 'Programmierung'),
 ('Was ist ein Primary Key in MySQL?', 'Eindeutige ID für eine Tabelle', 'Datenbanken'),
 ('Welche HTTP-Methode sendet Daten?', 'POST', 'Webentwicklung');
+
+-- Benutzer-Fortschritt
+CREATE TABLE benutzer_fortschritt (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    benutzer_id INT NOT NULL,
+    frage_id INT NOT NULL,
+    status ENUM('richtig', 'falsch', 'teilweise') NOT NULL,
+    FOREIGN KEY (benutzer_id) REFERENCES benutzer(id) ON DELETE CASCADE,
+    FOREIGN KEY (frage_id) REFERENCES fragen(id) ON DELETE CASCADE
+);
