@@ -22,3 +22,4 @@ if ($user && password_verify($password, $user['password'])) {
     echo json_encode(["message" => "Login fehlgeschlagen!"]);
 }
 ?>
+
