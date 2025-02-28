@@ -8,16 +8,20 @@ async function ladeFragen() {
 }
 
 function zeigeFrage() {
-    document.getElementById("frage").innerText = fragen[aktuelleFrageIndex].frage;
-    document.getElementById("antwort").value = "";
-    document.getElementById("ergebnis").innerText = "";
-    document.getElementById("next-card").style.display = "none";
+    if (aktuelleFrageIndex < fragen.length) {
+        document.getElementById("frage").innerText = fragen[aktuelleFrageIndex].frage;
+        document.getElementById("antwort").value = "";
+        document.getElementById("ergebnis").innerText = "";
+        document.getElementById("next-card").style.display = "none";
+    } else {
+        document.getElementById("card-container").innerHTML = "<h2>Du hast alle Fragen beantwortet!</h2>";
+    }
 }
 
 async function pruefeAntwort() {
     let userAntwort = document.getElementById("antwort").value;
     let frageId = fragen[aktuelleFrageIndex].id;
-
+    
     let response = await fetch("http://localhost/backend/check_antwort.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -25,7 +29,7 @@ async function pruefeAntwort() {
     });
 
     let result = await response.json();
-    document.getElementById("ergebnis").innerText = result.korrekt === "richtig"
+    document.getElementById("ergebnis").innerText = result.korrekt === "richtig" 
         ? "✅ Richtig!" 
         : `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
 
@@ -34,11 +38,7 @@ async function pruefeAntwort() {
 
 function naechsteFrage() {
     aktuelleFrageIndex++;
-    if (aktuelleFrageIndex < fragen.length) {
-        zeigeFrage();
-    } else {
-        alert("Du hast alle Fragen beantwortet!");
-    }
+    zeigeFrage();
 }
 
 ladeFragen();
