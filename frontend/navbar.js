@@ -2,6 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("navbar.html")
         .then(response => response.text())
         .then(html => {
-            document.getElementById("navbar-container").innerHTML = html;
+            document.body.insertAdjacentHTML("afterbegin", html);
         });
 });
