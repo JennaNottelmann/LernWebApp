@@ -1,89 +1,68 @@
-/* 🔹 Navbar-Styling */
-nav {
-    background-color: #007bff;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-/* 🔹 Navbar-Listen */
-nav ul {
-    list-style-type: none;
+/* 🔹 Allgemeines Styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
-/* 🔹 Link-Styling */
-nav ul li {
-    position: relative;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px;
-    transition: background 0.3s;
-}
-
-nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-}
-
-/* 🔹 Navbar Links Links & Rechts positionieren */
-.nav-left {
-    margin-left: 20px;
-}
-
-.nav-right {
-    margin-right: 20px;
-    margin-left: auto; /* Damit Profil nach rechts rutscht */
-}
-
-/* 🔹 Dropdown-Menü */
-.dropdown {
-    position: relative;
-}
-
-.dropbtn {
-    cursor: pointer;
-    padding: 10px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 180px;
-    right: 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 10px;
+/* 🔹 Überschrift */
+h1 {
+    margin-top: 80px;
+    font-size: 28px;
     color: #333;
-    text-decoration: none;
+}
+
+/* 🔹 Lernkarten-Container */
+#card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+/* 🔹 Lernkarte */
+#card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+#card:hover {
+    transform: scale(1.05);
+}
+
+/* 🔹 Eingabefeld */
+input {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 🔹 Button */
+button {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
     transition: background 0.3s;
 }
 
-.dropdown-content a:hover {
-    background: #f1f1f1;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* Dropdown anzeigen, wenn mit Maus darüber */
-.dropdown:hover .dropdown-content {
-    display: block;
+/* 🔹 Ergebnis-Text */
+#ergebnis {
+    margin-top: 10px;
+    font-weight: bold;
 }
