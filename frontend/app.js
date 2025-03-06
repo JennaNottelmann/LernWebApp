@@ -26,15 +26,20 @@ async function ladeFragen() {
 
 
 function zeigeFrage() {
-    console.log("Aufruf von zeigeFrage(), Fragen-Array:", fragen);
+    console.log("Frage anzeigen, Index:", aktuelleFrageIndex);
 
-    if (!fragen || fragen.length === 0) {
-        document.getElementById("frage").innerText = "❌ Keine Fragen in der Datenbank!";
+    if (aktuelleFrageIndex >= fragen.length) {
+        document.getElementById("card-container").innerHTML = "<h2>🎉 Du hast alle Fragen beantwortet!</h2>";
+        document.getElementById("next-card").style.display = "none"; // Button ausblenden
         return;
     }
 
-    document.getElementById("frage").innerText = fragen[0].frage;
+    document.getElementById("frage").innerText = fragen[aktuelleFrageIndex].frage;
+    document.getElementById("antwort").value = "";
+    document.getElementById("ergebnis").innerText = "";
+    document.getElementById("next-card").style.display = "block"; // Button anzeigen
 }
+
 
 
 async function pruefeAntwort() {
