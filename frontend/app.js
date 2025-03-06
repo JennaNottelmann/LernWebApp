@@ -3,36 +3,39 @@ let fragen = [];
 
 async function ladeFragen() {
     try {
-        let response = await fetch("http://localhost/backend/get_fragen.php");
-        let data = await response.json();
+        let response = await fetch("http://localhost/LernWebApp/backend/get_fragen.php");
+        console.log("Antwort von API:", response);
 
-        if (data.error) {
-            document.getElementById("frage").innerText = "❌ Fehler: " + data.error;
+        let data = await response.json();
+        console.log("Erhaltene Daten:", data); // Hier siehst du die Fragen
+
+        if (!Array.isArray(data) || data.length === 0) {
+            console.error("❌ Keine Fragen erhalten oder falsches Format:", data);
+            document.getElementById("frage").innerText = "❌ Keine Fragen gefunden!";
             return;
         }
 
         fragen = data;
+        console.log("Gespeicherte Fragen:", fragen);
         zeigeFrage();
     } catch (error) {
+        console.error("Fehler beim Abrufen der Fragen:", error);
         document.getElementById("frage").innerText = "❌ Fehler beim Laden der Fragen!";
     }
 }
 
+
 function zeigeFrage() {
-    if (fragen.length === 0) {
+    console.log("Aufruf von zeigeFrage(), Fragen-Array:", fragen);
+
+    if (!fragen || fragen.length === 0) {
         document.getElementById("frage").innerText = "❌ Keine Fragen in der Datenbank!";
         return;
     }
 
-    if (aktuelleFrageIndex < fragen.length) {
-        document.getElementById("frage").innerText = fragen[aktuelleFrageIndex].frage;
-        document.getElementById("antwort").value = "";
-        document.getElementById("ergebnis").innerText = "";
-        document.getElementById("next-card").style.display = "none";
-    } else {
-        document.getElementById("card-container").innerHTML = "<h2>🎉 Du hast alle Fragen beantwortet!</h2>";
-    }
+    document.getElementById("frage").innerText = fragen[0].frage;
 }
+
 
 async function pruefeAntwort() {
     let userAntwort = document.getElementById("antwort").value;
@@ -45,9 +48,9 @@ async function pruefeAntwort() {
     });
 
     let result = await response.json();
-    document.getElementById("ergebnis").innerText = result.korrekt === "richtig" 
-        ? "✅ Richtig!" 
-        : `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
+    document.getElementById("ergebnis").innerText = result.korrekt === "richtig" ?
+        "✅ Richtig!" :
+        `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
 
     document.getElementById("next-card").style.display = "block";
 }
