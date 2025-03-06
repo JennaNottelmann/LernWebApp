@@ -59,7 +59,7 @@ async function pruefeAntwort() {
         `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
 }
 
-}
+
 
 function naechsteFrage() {
     console.log("Button wurde geklickt!"); // Debugging
