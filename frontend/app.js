@@ -41,7 +41,7 @@ async function pruefeAntwort() {
     let userAntwort = document.getElementById("antwort").value;
     let frageId = fragen[aktuelleFrageIndex].id;
 
-    let response = await fetch("http://localhost/backend/check_antwort.php", {
+    let response = await fetch("http://localhost/LernWebApp/backend/check_antwort.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ frage_id: frageId, antwort: userAntwort })
