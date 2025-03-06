@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -21,4 +20,3 @@
     <script src="auth.js"></script>
 </body>
 </html>
-?>

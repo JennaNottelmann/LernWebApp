@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -19,4 +18,3 @@
     <script src="dashboard.js"></script>
 </body>
 </html>
-?>

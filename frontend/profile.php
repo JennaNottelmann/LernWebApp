@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -24,4 +23,3 @@
     <script src="profile.js"></script>
 </body>
 </html>
-?>

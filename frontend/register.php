@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -37,4 +36,3 @@
     </script>
 </body>
 </html>
-?>

@@ -1,4 +1,3 @@
-<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    require_once 'navbar.php';
+    <?php include 'navbar.php'; ?>
 
     <h1>Admin Dashboard</h1>
 
@@ -37,4 +36,3 @@
     <script src="admin.js"></script>
 </body>
 </html>
-?>
