@@ -45,19 +45,20 @@ function zeigeFrage() {
 async function pruefeAntwort() {
     let userAntwort = document.getElementById("antwort").value;
     let frageId = fragen[aktuelleFrageIndex].id;
+    let richtigeAntwort = fragen[aktuelleFrageIndex].antwort;
 
-    let response = await fetch("http://localhost/LernWebApp/backend/check_antwort.php", {
+    let response = await fetch("http://localhost/LernWebApp/backend/check_antwort_ki.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ frage_id: frageId, antwort: userAntwort })
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ antwort: userAntwort, richtige_antwort: richtigeAntwort })
     });
 
     let result = await response.json();
     document.getElementById("ergebnis").innerText = result.korrekt === "richtig" ?
         "✅ Richtig!" :
         `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
+}
 
-    document.getElementById("next-card").style.display = "block";
 }
 
 function naechsteFrage() {
