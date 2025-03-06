@@ -56,8 +56,13 @@ async function pruefeAntwort() {
 }
 
 function naechsteFrage() {
-    aktuelleFrageIndex++;
-    zeigeFrage();
+    console.log("Button wurde geklickt!"); // Debugging
+
+    aktuelleFrageIndex++; // Zähler erhöhen
+    console.log("Neuer Frageindex:", aktuelleFrageIndex); // Debugging
+
+    zeigeFrage(); // Nächste Frage anzeigen
 }
+
 
 ladeFragen();
