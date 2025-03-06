@@ -1,3 +1,4 @@
+<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="navbar.js"></script>
+    <?php include 'navbar.php'; ?>
 
     <h1>Registrieren</h1>
     <form id="register-form">
@@ -16,7 +17,7 @@
         <button type="submit">Registrieren</button>
     </form>
     <p id="status"></p>
-    <a href="login.html">Bereits registriert? Login</a>
+    <a href="login.php">Bereits registriert? Login</a>
     <script>
         document.getElementById("register-form").addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -36,3 +37,4 @@
     </script>
 </body>
 </html>
+?>

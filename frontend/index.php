@@ -1,3 +1,4 @@
+<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
 
-    <script src="navbar.js"></script>
+    <?php include 'navbar.php'; ?>
 
     <h1>AP1 Lernkarten</h1>
     
@@ -26,3 +27,5 @@
     <script src="app.js"></script>
 </body>
 </html>
+?>
+

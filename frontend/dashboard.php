@@ -1,3 +1,4 @@
+<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="navbar.js"></script>
+    <?php include 'navbar.php'; ?>
 
     <h1>Dein Lernfortschritt</h1>
     <div id="fortschritt-container">
@@ -18,3 +19,4 @@
     <script src="dashboard.js"></script>
 </body>
 </html>
+?>

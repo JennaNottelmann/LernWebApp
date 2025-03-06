@@ -1,3 +1,4 @@
+<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,9 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="navbar.js"></script>
+    <?php include 'navbar.php'; ?>
 
-    <div id="navbar-container"></div>
     <h1>Dein Profil</h1>
     <p><strong>Benutzername:</strong> <span id="username"></span></p>
 
@@ -21,7 +21,7 @@
     </form>
     <p id="status"></p>
 
-    <script src="navbar.js"></script>
     <script src="profile.js"></script>
 </body>
 </html>
+?>

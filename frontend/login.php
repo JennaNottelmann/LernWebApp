@@ -1,3 +1,4 @@
+<?php
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="navbar.js"></script>
+    <?php include 'navbar.php'; ?>
 
     <h1>Login</h1>
     <form id="login-form">
@@ -16,7 +17,8 @@
         <button type="submit">Login</button>
     </form>
     <p id="status"></p>
-    <a href="register.html">Noch keinen Account? Registrieren</a>
+    <a href="register.php">Noch keinen Account? Registrieren</a>
     <script src="auth.js"></script>
 </body>
 </html>
+?>
