@@ -41,8 +41,8 @@ CREATE TABLE `benutzer` (
 --
 
 INSERT INTO `benutzer` (`id`, `username`, `password`, `role`, `bezahlt`, `erstellt_von_admin`) VALUES
-(1, 'admin', '$2y$10$zKE8a/ZLsP8mTQ0xBYZP/u', 'admin', 1, 1),
-(2, 'testuser', '$2y$10$zKE8a/ZLsP8mTQ0xBYZP/u', 'user', 1, 0);
+(1, 'admin', 'AdminTest1234', 'admin', 1, 1),
+(2, 'testuser', 'TestUser1234', 'user', 1, 0);
 
 -- --------------------------------------------------------
 
