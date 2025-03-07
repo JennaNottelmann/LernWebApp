@@ -53,11 +53,21 @@ async function pruefeAntwort() {
         body: new URLSearchParams({ antwort: userAntwort, richtige_antwort: richtigeAntwort })
     });
 
-    let result = await response.json();
-    document.getElementById("ergebnis").innerText = result.korrekt === "richtig" ?
-        "✅ Richtig!" :
-        `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
+    console.log("Antwort von API:", response);
+
+    try {
+        let result = await response.json();
+        console.log("Erhaltene Daten:", result);
+
+        document.getElementById("ergebnis").innerText = result.korrekt === "richtig" ?
+            "✅ Richtig!" :
+            `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
+    } catch (error) {
+        console.error("Fehler beim JSON-Parsing:", error);
+        document.getElementById("ergebnis").innerText = "❌ Fehler beim Verarbeiten der Antwort!";
+    }
 }
+
 
 
 
