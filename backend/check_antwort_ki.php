@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/vendor/autoload.php'; // Guzzle einbinden
+require __DIR__ . '/.../vendor/autoload.php'; // Guzzle einbinden
 
 use GuzzleHttp\Client;
 
