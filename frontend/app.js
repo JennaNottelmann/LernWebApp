@@ -41,11 +41,12 @@ function zeigeFrage() {
 }
 
 
-
 async function pruefeAntwort() {
     let userAntwort = document.getElementById("antwort").value;
     let frageId = fragen[aktuelleFrageIndex].id;
     let richtigeAntwort = fragen[aktuelleFrageIndex].antwort;
+
+    console.log("Sende Anfrage mit:", userAntwort, richtigeAntwort);
 
     let response = await fetch("http://localhost/LernWebApp/backend/check_antwort_ki.php", {
         method: "POST",
@@ -53,19 +54,12 @@ async function pruefeAntwort() {
         body: new URLSearchParams({ antwort: userAntwort, richtige_antwort: richtigeAntwort })
     });
 
-    console.log("Antwort von API:", response);
+    let result = await response.json();
+    console.log("Antwort von API:", result);
 
-    try {
-        let result = await response.json();
-        console.log("Erhaltene Daten:", result);
-
-        document.getElementById("ergebnis").innerText = result.korrekt === "richtig" ?
-            "✅ Richtig!" :
-            `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
-    } catch (error) {
-        console.error("Fehler beim JSON-Parsing:", error);
-        document.getElementById("ergebnis").innerText = "❌ Fehler beim Verarbeiten der Antwort!";
-    }
+    document.getElementById("ergebnis").innerText = result.korrekt === "richtig" ?
+        "✅ Richtig!" :
+        `❌ Falsch! Richtige Antwort: ${result.richtige_antwort}`;
 }
 
 
